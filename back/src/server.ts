@@ -1,6 +1,8 @@
 import express from "express";
 import serveIndex from "serve-index";
 
+import { api } from "./api";
+
 const app = express();
 const port: number = 3000;
 const wwwDir = ".";
@@ -9,6 +11,8 @@ app.use((req, res, next) => {
   console.log("req: ", req.url);
   next();
 });
+
+app.use("/api", api);
 
 app.use(express.static(wwwDir));
 app.use(serveIndex(wwwDir, { icons: true }));
