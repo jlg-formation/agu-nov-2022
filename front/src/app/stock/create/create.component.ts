@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Article } from 'src/app/interfaces/article';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-create',
@@ -16,7 +19,14 @@ export class CreateComponent implements OnInit {
     qty: new FormControl(1, [Validators.required]),
   });
 
-  constructor() {}
+  constructor(private articleService: ArticleService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  async submit() {
+    console.log('submit');
+    const newArticle = this.f.value as Article;
+    // await this.articleService.add(newArticle);
+    this.router.navigateByUrl('/stock');
+  }
 }
