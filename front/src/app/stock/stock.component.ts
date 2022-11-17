@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../interfaces/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-stock',
@@ -7,20 +7,10 @@ import { Article } from '../interfaces/article';
   styleUrls: ['./stock.component.scss'],
 })
 export class StockComponent implements OnInit {
-  articles: Article[] = [
-    {
-      name: 'Tournevis',
-      price: 2.5,
-      qty: 123,
-    },
-    {
-      name: 'Marteau',
-      price: 2.25,
-      qty: 25,
-    },
-  ];
-
-  constructor() {}
+  articleService: ArticleService;
+  constructor(articleService: ArticleService) {
+    this.articleService = articleService;
+  }
 
   ngOnInit(): void {}
 }
