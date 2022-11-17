@@ -11,6 +11,11 @@ export class ArticleService {
     console.log('instantiate service');
   }
 
+  async add(newArticle: Article) {
+    this.articles.push(newArticle);
+    this.save();
+  }
+
   getArticles(): Article[] {
     const str = localStorage.getItem('articles');
     if (str === null) {
@@ -30,10 +35,11 @@ export class ArticleService {
     return JSON.parse(str);
   }
 
-  async add(newArticle: Article) {
-    this.articles.push(newArticle);
+  remove(selectedArticles: Set<Article>) {
+    this.articles = this.articles.filter((a) => !selectedArticles.has(a));
     this.save();
   }
+
   save() {
     localStorage.setItem('articles', JSON.stringify(this.articles));
   }

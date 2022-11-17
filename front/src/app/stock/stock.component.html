@@ -4,7 +4,9 @@
     <nav>
       <button>Rafraîchir</button>
       <a routerLink="create" class="button">Ajouter</a>
-      <button [hidden]="selectedArticles.size === 0">Supprimer</button>
+      <button [hidden]="selectedArticles.size === 0" (click)="remove()">
+        Supprimer
+      </button>
     </nav>
     <table>
       <thead>

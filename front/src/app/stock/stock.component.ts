@@ -20,4 +20,10 @@ export class StockComponent implements OnInit {
     }
     this.selectedArticles.add(a);
   }
+
+  remove() {
+    console.log('remove');
+    this.articleService.remove(this.selectedArticles);
+    this.selectedArticles.clear();
+  }
 }
