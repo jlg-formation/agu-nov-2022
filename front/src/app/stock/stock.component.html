@@ -4,7 +4,7 @@
     <nav>
       <button>Rafraîchir</button>
       <a routerLink="create" class="button">Ajouter</a>
-      <button>Supprimer</button>
+      <button [hidden]="selectedArticles.size === 0">Supprimer</button>
     </nav>
     <table>
       <thead>
@@ -15,7 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of articleService.articles">
+        <tr
+          *ngFor="let a of articleService.articles"
+          (click)="toggle(a)"
+          [class.selected]="selectedArticles.has(a)"
+        >
           <td class="name">{{ a.name }}</td>
           <td class="price">{{ a.price }} €</td>
           <td class="qty">{{ a.qty }}</td>
