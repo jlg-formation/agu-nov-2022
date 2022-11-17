@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
   async submit() {
     console.log('submit');
     const newArticle = this.f.value as Article;
-    // await this.articleService.add(newArticle);
-    this.router.navigateByUrl('/stock');
+    await this.articleService.add(newArticle);
+    await this.router.navigateByUrl('/stock');
   }
 }

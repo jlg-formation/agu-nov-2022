@@ -17,7 +17,12 @@ export class ArticleService {
       qty: 25,
     },
   ];
+
   constructor() {
     console.log('instantiate service');
+  }
+
+  async add(newArticle: Article) {
+    this.articles.push(newArticle);
   }
 }
