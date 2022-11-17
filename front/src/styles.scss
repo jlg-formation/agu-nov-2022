@@ -6,3 +6,13 @@
 body {
   font-family: sans-serif;
 }
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
