@@ -16,6 +16,16 @@ export class HttpArticleService extends ArticleService {
 
   refresh() {
     //...
-    this.http.get(url).subscribe();
+    this.http.get(url).subscribe({
+      next: (data) => {
+        console.log('data: ', data);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+      error: (err) => {
+        console.log('err: ', err);
+      },
+    });
   }
 }
