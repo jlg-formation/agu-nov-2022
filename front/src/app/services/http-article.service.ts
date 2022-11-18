@@ -31,4 +31,19 @@ export class HttpArticleService extends ArticleService {
       },
     });
   }
+
+  override async add(newArticle: Article): Promise<void> {
+    await super.add(newArticle);
+    this.http.post(url, newArticle).subscribe({
+      next: () => {
+        console.log('next');
+      },
+      complete: () => {
+        console.log('complete');
+      },
+      error: (err) => {
+        console.log('err: ', err);
+      },
+    });
+  }
 }

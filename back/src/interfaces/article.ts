@@ -4,5 +4,3 @@ export interface Article {
   price: number;
   qty: number;
 }
-
-export type NewArticle = Omit<Article, 'id'>;

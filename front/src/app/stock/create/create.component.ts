@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Article } from 'src/app/interfaces/article';
+import { Article, NewArticle } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
 
   async submit() {
     console.log('submit');
-    const newArticle = this.f.value as Article;
+    const newArticle = this.f.value as NewArticle;
     await this.articleService.add(newArticle);
     await this.router.navigateByUrl('/stock');
   }
