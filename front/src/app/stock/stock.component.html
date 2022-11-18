@@ -2,7 +2,9 @@
   <h1>Liste des articles</h1>
   <div class="content">
     <nav>
-      <button>Rafraîchir</button>
+      <button>
+        <fa-icon [icon]="faCoffee"></fa-icon>
+      </button>
       <a routerLink="create" class="button">Ajouter</a>
       <button [hidden]="selectedArticles.size === 0" (click)="remove()">
         Supprimer
