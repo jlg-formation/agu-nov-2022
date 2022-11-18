@@ -24,7 +24,9 @@ export class ArticleService {
     return JSON.parse(str);
   }
 
-  remove(selectedArticles: Set<Article>) {
+  async refresh() {}
+
+  async remove(selectedArticles: Set<Article>) {
     this.articles = this.articles.filter((a) => !selectedArticles.has(a));
     this.save();
   }
