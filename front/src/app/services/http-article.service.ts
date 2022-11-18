@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Article } from '../interfaces/article';
 import { ArticleService } from './article.service';
 
-const url = 'http://localhost:3000/api/articles';
+const url = '/api/articles';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,11 @@ export class HttpArticleService extends ArticleService {
 
   refresh() {
     //...
-    this.http.get(url).subscribe({
-      next: (data) => {
-        console.log('data: ', data);
+    this.http.get<Article[]>(url).subscribe({
+      next: (articles) => {
+        console.log('articles: ', articles);
+        this.articles = articles;
+        this.save();
       },
       complete: () => {
         console.log('complete');
